@@ -16,6 +16,7 @@
  */
 package org.camunda.bpm.engine.test.bpmn.servicetask;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
@@ -25,14 +26,18 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.camunda.bpm.engine.ClassLoadingException;
+import org.camunda.bpm.engine.ProcessEngineConfiguration;
 import org.camunda.bpm.engine.ProcessEngineException;
 import org.camunda.bpm.engine.impl.util.CollectionUtil;
 import org.camunda.bpm.engine.runtime.Execution;
 import org.camunda.bpm.engine.runtime.ProcessInstance;
 import org.camunda.bpm.engine.task.Task;
 import org.camunda.bpm.engine.test.Deployment;
+import org.camunda.bpm.engine.test.RequiredHistoryLevel;
 import org.camunda.bpm.engine.test.bpmn.servicetask.util.GenderBean;
 import org.camunda.bpm.engine.test.util.PluggableProcessEngineTest;
+import org.camunda.bpm.model.bpmn.Bpmn;
+import org.camunda.bpm.model.bpmn.BpmnModelInstance;
 import org.junit.Test;
 
 /**
@@ -142,6 +147,12 @@ public class JavaServiceTaskTest extends PluggableProcessEngineTest {
     // check if BaseDelegateExecution#getBusinessKey() behaves like DelegateExecution#getProcessBusinessKey()
     String key2 = (String) runtimeService.getVariable(processInstance.getId(), "businessKeyAsProcessBusinessKey");
     assertEquals(key2, key);
+  }
+  
+  @Test
+  public void testMoreStuff() {
+    fail("move test to TransientVariableTest");
+    fail("test behavior that this cannot override a persistent variable");
   }
 
 }
